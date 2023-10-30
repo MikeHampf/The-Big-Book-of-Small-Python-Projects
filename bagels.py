@@ -44,7 +44,12 @@ def getSecretNum():
     return True
 
 def getClues(guess, secretNum):
-    return True
+    numbers = list('0123456789')
+    random.shuffle(numbers)
+    secretNum=''
+    for i in range(NUM_DIGITS):
+        secretNum+=str(numbers[i])
+    return secretNum
 
 if __name__ == '__main__':
     main()
