@@ -41,15 +41,15 @@ When I say:     That means:
     print("Thanks for playing!")
 
 def getSecretNum():
-    return True
-
-def getClues(guess, secretNum):
     numbers = list('0123456789')
     random.shuffle(numbers)
     secretNum=''
     for i in range(NUM_DIGITS):
         secretNum+=str(numbers[i])
     return secretNum
+
+def getClues(guess, secretNum):
+    return True
 
 if __name__ == '__main__':
     main()
