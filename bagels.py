@@ -23,7 +23,7 @@ When I say:     That means:
             guess=''
             while len(guess)!=NUM_DIGITS or not guess.isdecimal():
                 print('Guess #{}: '.format(numGuesses))
-                guess = imput('> ')
+                guess = input('> ')
 
             clues = getClues(guess, secretNum)
             print(clues)
@@ -49,7 +49,22 @@ def getSecretNum():
     return secretNum
 
 def getClues(guess, secretNum):
-    return True
+    if guess==secretNum:
+        return 'You got it, Champ!'
+    
+    clues = []
+
+    for i in range(len(guess)):
+        if guess[i] == secretNum[i]:
+            clues.append('Fermi')
+        elif guess[i] in secretNum:
+            clues.append('Pico')
+    if len(clues)==0:
+        return 'Bagels'
+    else:
+        clues.sort()
+        return ''.join(clues)
+
 
 if __name__ == '__main__':
     main()
