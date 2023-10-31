@@ -63,7 +63,7 @@ def getClues(guess, secretNum):
         return 'Bagels'
     else:
         clues.sort()
-        return ''.join(clues)
+        return ' '.join(clues)
 
 
 if __name__ == '__main__':
