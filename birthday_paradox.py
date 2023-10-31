@@ -41,9 +41,30 @@ for i, birthday, in enumerate(birthdays):
         print(', ', end='')
         monthName=MONTHS[birthday.month-1]
         dateText='{} {}'.format(monthName, birthday.day)
-        print()
-        print()
+        print(dateText, end='')
+print()
+print()
 
 match = getMatch(birthdays)
 
 print('In this simulation, ', end='')
+if match != None:
+    monthName=MONTHS[match.month-1]
+    dateText='{} {}'.format(monthName, match.day)
+    print('multiple people have a birthday on', dateText)
+else:
+    print('there are no matching birthdays.')
+print()
+
+print('Generating', numBDays, 'random birtdays 100,000 times...')
+input('Press Enter to begin...')
+
+print('Let\'s run another 100,000 simulations.')
+simMatch = 0
+for i in range(100_000):
+    if i%10_000==0:
+        print(i, 'simulations run...')
+        birthdays = getBirthdays(numBDays)
+        if getMatch(birthdays)!=None:
+            simMatch = simMatch+1
+print('100,000 simiulations run.')
