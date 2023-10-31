@@ -34,12 +34,12 @@ while True:
         break
 print()
 
-print('Here are', numBDays, 'birthdays:')
+print(f'Here are {numBDays} birthdays:')
 birthdays = getBirthdays(numBDays)
 for i, birthday, in enumerate(birthdays):
     if i!=0:
         print(', ', end='')
-        monthName=MONTHS[birthday.month-1]
+        monthName=MONTHS[birthday.month - 1]
         dateText='{} {}'.format(monthName, birthday.day)
         print(dateText, end='')
 print()
@@ -68,3 +68,9 @@ for i in range(100_000):
         if getMatch(birthdays)!=None:
             simMatch = simMatch+1
 print('100,000 simiulations run.')
+
+probability=round(simMatch/100_000*100, 2)
+print(f'''Out of 100,000 simulations of', {numBDays} people, there was a
+matching birthday in that group {simMatch} times.  That means
+that {numBDays} people have a {probability}% chance of
+having a matching birthday in their group.''')
