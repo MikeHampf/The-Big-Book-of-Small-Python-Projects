@@ -90,7 +90,56 @@ def main():
         print('\n\n')
 
 def getBet(maxBet):
-    pass
+    while True:
+        print('How much do you bet? (1-{}, or QUIT)'.format(maxBet))
+        bet = input('> ').upper().strip()
+        if bet == 'QUIT':
+            print('Thanks for playing, yo')
+            sys.exit()
+        if not bet.isdecimal():
+            continue
+        bet = int(bet)
+        if(1<=bet<=maxBet):
+            return bet
+        
+def getDeck():
+    deck = []
+    for suit in (HEARTS, DIAMONDS, SPADES, CLUBS):
+        for rank in range(2, 11):
+            deck.append((str(rank), suit))
+        for rank in ('J','Q','K','A'):
+            deck.append((rank, suit))
+    random.shuffle(deck)
+    return deck
+
+def displayHands(playerHand, dealerHand, showDealerHand):
+    print()
+    if showDealerHand:
+        print('DEALER: ',getHandValue(dealerHand))
+        displayCards(dealerHand)
+    else:
+        print('DEALER: ???')
+        displayHands([BACKSIDE] + dealerHand[1:])
+
+    print('PLAYER ',getHandValue(playerHand))
+    displayHands(playerHand)
+
+def getHandValue(cards):
+    numberOfAces = 0
+    for card in cards:
+        rank = card[0]
+        if rank=='A':
+            numberOfAces += 1
+        elif rank in ('K','Q','J'):
+            value += 10
+        else: 
+            value += int(rank)
+    value += numberOfAces
+    for i in range(numberOfAces):
+        if value + 10 <=21:
+            value+=10
+    return value
+
 
 if __name__ == '__main__':
     main()
