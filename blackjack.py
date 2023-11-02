@@ -140,6 +140,33 @@ def getHandValue(cards):
             value+=10
     return value
 
+def displayCards(cards):
+    rows = ['','','','','']
+    for i, card in enumerate(cards):
+        rows[0]+=' ___ '
+        if card == BACKSIDE:
+            rows[1]+='|## |'
+            rows[2]+='|###|'
+            rows[3]+='| ##|'
+        else:
+            rank, suit = card
+            rows[1]+='|{} |'.format(rank.ljust(2))
+            rows[2]+='| {} |'.format(suit)
+            rows[3]+='|  {}|'.format(rank.rjust(2, '_'))
+    for row in rows:
+        print(row)
+
+def getMove(playerHand, money):
+    while True:
+        moves=['(H)it','(S)tand']
+        if len(playerHand)==2 and money > 0:
+            moves.append('(D)ouble down')
+        movePrompt = ', '.join(moves) + '> '
+        move = input(movePrompt).upper()
+        if move in ('H','S'):
+            return move
+        if move == 'D' and '(D)ouble down' in moves:
+            return move
 
 if __name__ == '__main__':
     main()
