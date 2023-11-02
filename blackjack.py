@@ -119,12 +119,13 @@ def displayHands(playerHand, dealerHand, showDealerHand):
         displayCards(dealerHand)
     else:
         print('DEALER: ???')
-        displayHands([BACKSIDE] + dealerHand[1:])
+        displayCards([BACKSIDE] + dealerHand[1:])
 
-    print('PLAYER ',getHandValue(playerHand))
-    displayHands(playerHand)
+    print('PLAYER: ',getHandValue(playerHand))
+    displayCards(playerHand)
 
 def getHandValue(cards):
+    value = 0
     numberOfAces = 0
     for card in cards:
         rank = card[0]
@@ -147,12 +148,12 @@ def displayCards(cards):
         if card == BACKSIDE:
             rows[1]+='|## |'
             rows[2]+='|###|'
-            rows[3]+='| ##|'
+            rows[3]+='|_##|'
         else:
             rank, suit = card
             rows[1]+='|{} |'.format(rank.ljust(2))
             rows[2]+='| {} |'.format(suit)
-            rows[3]+='|  {}|'.format(rank.rjust(2, '_'))
+            rows[3]+='|_{}|'.format(rank.rjust(2, '_'))
     for row in rows:
         print(row)
 
