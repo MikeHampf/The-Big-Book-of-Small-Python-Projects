@@ -52,3 +52,28 @@ def main():
             elif logo[X]==WIDTH-3 and logo[Y]==HEIGHT-1:
                 logo[DIR]=UP_LEFT
                 cornerBounces+=1
+            
+            elif logo[X]==0 and logo[DIR]==UP_LEFT:
+                logo[DIR]=UP_RIGHT
+            elif logo[X]==0 and logo[DIR]==DOWN_LEFT:
+                logo[DIR]=DOWN_RIGHT
+
+            elif logo[X]==WIDTH-3 and logo[DIR]==UP_RIGHT:
+                logo[DIR]=UP_LEFT
+            elif logo[X]==WIDTH-3 and logo[DIR]==DOWN_RIGHT:
+                logo[DIR]=DOWN_LEFT
+
+            elif logo[Y]==0 and logo[DIR]==UP_LEFT:
+                logo[DIR]=DOWN_LEFT
+            elif logo[Y]==0 and logo[DIR]==UP_RIGHT:
+                logo[DIR]=DOWN_RIGHT
+
+            elif logo[Y]==HEIGHT-1 and logo[DIR]==DOWN_LEFT:
+                logo[DIR]=UP_LEFT
+            elif logo[Y]==HEIGHT-1 and logo[DIR]==DOWN_RIGHT:
+                logo[DIR]=UP_RIGHT
+
+            if logo[DIR] != originalDirection:
+                logo[COLOR]=random.choice(COLORS)
+
+            
