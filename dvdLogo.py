@@ -31,7 +31,7 @@ def main():
                       X: random.randint(1,WIDTH-4),
                       Y: random.randint(1,HEIGHT-4),
                       DIR: random.choice(DIRECTIONS)})
-        if logos[-1][X]%2==1:
+        if logos[-1][X] % 2 == 1:
             logos[-1][X]-=1
 
     cornerBounces = 0
@@ -91,7 +91,7 @@ def main():
         
         bext.goto(5,0)
         bext.fg('white')
-        print('Corner bounces: ', cornerBounces, end='')
+        print('Corner bounces:', cornerBounces, end='')
         for logo in logos:
             bext.goto(logo[X], logo[Y])
             bext.fg(logo[COLOR])
@@ -99,13 +99,14 @@ def main():
         bext.goto(0,0)
         sys.stdout.flush()
         time.sleep(PAUSE_AMOUNT)
-        if __name__=='__main__':
-            try:
-                main()
-            except KeyboardInterrupt:
-                print()
-                print('Bouncing DVD Logo, by A. Sweigart')
-                sys.exit()
+
+if __name__=='__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        print()
+        print('Bouncing DVD Logo, by A. Sweigart')
+        sys.exit()
 
 
             
