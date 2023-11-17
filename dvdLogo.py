@@ -76,4 +76,36 @@ def main():
             if logo[DIR] != originalDirection:
                 logo[COLOR]=random.choice(COLORS)
 
+            if logo[DIR]==UP_RIGHT:
+                logo[X]+=2
+                logo[Y]-=1
+            elif logo[DIR]==UP_LEFT:
+                logo[X]-=2
+                logo[Y]-=1
+            elif logo[DIR]==DOWN_RIGHT:
+                logo[X]+=2
+                logo[Y]+=1
+            elif logo[DIR]==DOWN_LEFT:
+                logo[X]-=2
+                logo[Y]+=1
+        
+        bext.goto(5,0)
+        bext.fg('white')
+        print('Corner bounces: ', cornerBounces, end='')
+        for logo in logos:
+            bext.goto(logo[X], logo[Y])
+            bext.fg(logo[COLOR])
+            print('DVD', end='')
+        bext.goto(0,0)
+        sys.stdout.flush()
+        time.sleep(PAUSE_AMOUNT)
+        if __name__=='__main__':
+            try:
+                main()
+            except KeyboardInterrupt:
+                print()
+                print('Bouncing DVD Logo, by A. Sweigart')
+                sys.exit()
+
+
             
