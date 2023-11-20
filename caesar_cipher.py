@@ -56,6 +56,6 @@ for symbol in message:
 print(translated)
 try:
     pyperclip.copy(translated)
-    print('Full {}ed text copied to clipboard.'format(mode))
+    print('Full {}ed text copied to clipboard.'.format(mode))
 except:
     pass
