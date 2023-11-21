@@ -1,4 +1,4 @@
-print('Caesar Cipher Hacker, by A. Sweigart)
+print('Caesar Cipher Hacker, by A. Sweigart')
 print('Enter the encrypted Caesar cipher message to hack.')
 message = input('> ')
 
