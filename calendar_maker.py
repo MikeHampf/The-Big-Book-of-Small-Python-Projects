@@ -28,7 +28,7 @@ while True:
         break
     print('Please enter a number from 1 to 12')
 
-def getCalendarfor(year, month):
+def getCalendarFor(year, month):
     calText=''
     calText+=(' '*34)+MONTHS[month-1]+' '+str(year)+'\n'
     calText+='...Sunday.....Monday....Tuesday...Wednesday...Thursday....Friday....Saturday..\n'
@@ -46,3 +46,22 @@ def getCalendarfor(year, month):
             dayNumberRow += '|'+dayNumberLabel+(' '*8)
             currentDate+=datetime.timedelta(days=1)
         dayNumberRow += '|\n'
+
+        calText += dayNumberRow
+        for i in range(3):
+            calText += blankRow
+
+        if currentDate.month != month:
+            break
+    
+    calText += weekSeparator
+    return calText
+
+calText = getCalendarFor(year, month)
+print(calText)
+
+calendarFileame = 'calendar_{}_{}.txt'.format(year, month)
+with open(calendarFileame, 'w') as fileObj:
+    fileObj.write(calText)
+
+print('Saved to '+calendarFileame)
