@@ -17,12 +17,13 @@ p1Name = input('Human player 1, enter your name: ')
 p2Name = input('Human player 2, enter your name: ')
 playerNames = p1Name[:11].center(11)+'   '+p2Name[:11].center(11)
 print('''HERE ARE TWO BOXES:
-  __________     __________
+   _________      _________
  /         /|   /         /|
 +---------+ |  +---------+ |
 |   RED   | |  |   GOLD  | |
 |   BOX   | /  |   BOX   | /
-+---------+/   +---------+/''')
++---------+/   +---------+/
+''')
 
 print()
 print(playerNames)
@@ -34,3 +35,39 @@ print(p1Name+', you will get to look into your box.')
 print(p2Name.upper()+', close your eyes and don\'t look!!!')
 input('When '+p2Name+' has closed their eyes press Enter...')
 print()
+
+print(p1Name+' here is the inside of your box:')
+
+if random.randint(1,2)==1:
+    carrotInFirstBox=True
+else:
+    carrotInFirstBox=False
+
+if carrotInFirstBox:
+    print('''
+   ____W____ 
+  |    W    |
+  |    W    |
+  |___| |___|     _________
+ /    | |  /|   /         /|
++---------+ |  +---------+ |
+|   RED   | |  |   GOLD  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/
+ (CARROT!)''')
+    print(playerNames)
+else:
+    print('''
+   _________ 
+  |         |
+  |         |
+  |_________|     _________
+ /         /|   /         /|
++---------+ |  +---------+ |
+|   RED   | |  |   GOLD  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/
+(no carrot!)''')
+    print(playerNames)
+
+input('Press enter to continue...')
