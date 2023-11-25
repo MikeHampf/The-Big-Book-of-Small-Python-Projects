@@ -90,3 +90,53 @@ while True:
         print(p2Name+', please enter "YES or NO".')
     else:
         break
+
+firstBox = 'RED '
+secondBox = 'GOLD'
+
+if response.startswith('Y'):
+    carrotInFirstBox = not carrotInFirstBox
+    firstBox, secondBox = secondBox, firstBox
+
+print('''HERE ARE THE TWO BOXES:
+   _________      _________
+ /         /|   /         /|
++---------+ |  +---------+ |
+|   {}  | |  |   {}  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/
+      '''.format(firstBox, secondBox))
+print(playerNames)
+input('Press Enter to reveal the winner...')
+print()
+
+if carrotInFirstBox:
+    print('''
+   ____W____      _________
+  |    W    |    |         |
+  |    W    |    |         |
+  |___| |___|    |_________|
+ /    | |  /|   /         /|
++---------+ |  +---------+ |
+|   {}  | |  |   {}  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/'''.format(firstBox, secondBox))
+    
+else:
+    print('''
+   _________      ____W____
+  |         |    |    W    |
+  |         |    |    W    |
+  |_________|    |___| |___|
+ /         /|   /    | |  /|
++---------+ |  +---------+ |
+|   {}  | |  |   {}  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/'''.format(firstBox, secondBox))
+
+print(playerNames)
+if carrotInFirstBox:
+    print(p1Name+' is the winner!')
+else:
+    print(p2Name+' is the winner!')
+print("THANKS FOR PLAYING")
