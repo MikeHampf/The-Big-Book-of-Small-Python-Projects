@@ -71,3 +71,22 @@ else:
     print(playerNames)
 
 input('Press enter to continue...')
+
+print('\n' * 100)
+print(p1Name+', tell '+p2Name+' to open his/her eyes.')
+input('Press Enter to continue...')
+print()
+print(p1Name+', say one of the following sentences to '+p2Name+'.')
+print(' 1) There is a carrot in my box.')
+print(' 2) There is not a carrot in my box.')
+print()
+input('Then press Enter to continue...')
+print()
+
+print(p2Name)+', do you want to swap boxes with '+p1Name+'? YES/NO'
+while True:
+    response = input('> ').upper()
+    if not (response.startswith('Y') or response.startswith('N')):
+        print(p2Name+', please enter "YES or NO".')
+    else:
+        break
