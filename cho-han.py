@@ -44,3 +44,25 @@ while True:
     print('The dealer lifts the cup to reveal:')
     print('   ', JAPANESE_NUMBERS[dice1], '-', JAPANESE_NUMBERS[dice2])
     print('    ', dice1, '-', dice2)
+
+    rollIsEven = (dice1+dice2)%2 ==0
+    if rollIsEven:
+        correctBet="CHO"
+    else:
+        correctBet="HAN"
+
+    playerWon=bet==correctBet
+
+    if playerWon:
+        print('You win this time.  You take', pot, 'money.')
+        purse = purse+pot
+        print('The house Collects a', pot//10, 'money fee.')
+        purse=purse-(pot//10)
+    else:
+        purse = purse-pot
+        print('Loser')
+
+    if purse<=0:
+        print('You broke, homey')
+        print('Come back and lose some more money next time.')
+        sys.exit()
