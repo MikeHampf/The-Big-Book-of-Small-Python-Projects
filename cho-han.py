@@ -23,3 +23,24 @@ while True:
         else:
             pot=int(pot)
             break
+
+    dice1 = random.randint(1,6)
+    dice2 = random.randint(1,6)
+
+    print('The dealer swirls the cup and you hear the dice rattle around.')
+    print('The dealer slams the cup on the floor and asks you to place your')
+    print('bet before lifting the cup.')
+    print()
+    print('    CHO (even) or HAN (odd)?')
+
+    while True:
+        bet = input('> ').upper()
+        if bet !='CHO' and bet !='HAN':
+            print('Enter "CHO" or "HAN" ONLY.')
+            continue
+        else:
+            break
+
+    print('The dealer lifts the cup to reveal:')
+    print('   ', JAPANESE_NUMBERS[dice1], '-', JAPANESE_NUMBERS[dice2])
+    print('    ', dice1, '-', dice2)
