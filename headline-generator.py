@@ -86,9 +86,22 @@ def generateGiftIdeaHeadline():
     return f'{number} Gift Ideas to Give Your {noun} From {state}'
 
 def generateReasonsWhyHeadline():
-    pass
+    number1 = random.randint(3,19)
+    pluralNoun = random.choice(NOUNS)+'s'
+    number2 = random.ranint(1, number1)
+    return f'{number1} Reasons Why {pluralNoun} Are More Interesting Than You Think (Number {number2} Will Surprise You!)'
+
 def generateJobAutomatedHeadline():
-    pass
+    state = random.choice(STATES)
+    noun = random.choice(NOUNS)
+
+    i = random.randint(0,2)
+    pronoun1 = POSSESIVE_PRONOUNS[i]
+    pronoun2 = PERSONAL_PRONOUNS[i]
+    if pronoun1=='Their':
+        return f'This {state} {noun} Didn\'t Think Robots Would Take {pronoun1} job. {pronoun2} Were Wrong'
+    else:
+        return f'This {state} {noun} Didn\'t Think Robots Would Take {pronoun1} job. {pronoun2} Was Wrong'
 
 if __name__=="__main__":
     main()
