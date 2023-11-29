@@ -25,7 +25,7 @@ def main():
             break
 
     for i in range(numberOfHeadlines):
-        clickbaitType = random.randint(1,2)
+        clickbaitType = random.randint(1,8)
 
         if clickbaitType==1:
             headline = generateAreMillennialsKillingHeadline()
@@ -61,13 +61,30 @@ def generateWhatYouDontKnowHeadline():
     return f'Without This {noun}, {pluralNoun} Could Kill You {when}'
 
 def generateBigCompaniesHateHerHeadline():
-    pass
+    pronoun = random.choice(OBJECT_PRONOUNS)
+    state = random.choice(STATES)
+    noun1 = random.choice(NOUNS)
+    noun2 = random.choice(NOUNS)
+    return f'Big Companies Hate {pronoun}! See How This {state} {noun1} Invented a Cheaper {noun2}'
+
 def generateYouWontBelieveHeadline():
-    pass
+    state = random.choice(STATES)
+    noun = random.choice(NOUNS)
+    pronoun = random.choice(POSSESIVE_PRONOUNS)
+    place = random.choice(PLACES)
+    return f'You Won\'t Believe What This {state} {noun} Found in {pronoun} {place}'
+
 def generateDontWantYouToKnowHeadline():
-    pass
+    pluralNoun1 = random.choice(NOUNS)+'s'
+    pluralNoun2 = random.choice(NOUNS)+'s'
+    return f'What {pluralNoun1} Don\'t Want You To Know About {pluralNoun2}'
+
 def generateGiftIdeaHeadline():
-    pass
+    number = random.randint(7,15)
+    noun = random.choice(NOUNS)
+    state = random.choice(STATES)
+    return f'{number} Gift Ideas to Give Your {noun} From {state}'
+
 def generateReasonsWhyHeadline():
     pass
 def generateJobAutomatedHeadline():
