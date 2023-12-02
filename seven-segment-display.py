@@ -1,0 +1,79 @@
+"""A labeled seven-segment display, with each segment labeled A to G:
+ __A__
+|     |   Each digit in a seven-segment display:
+F     B    __       __   __        __   __  __    __   __
+|__G__|   |  |   |  __|  __| |__| |__  |__    |  |__| |__|
+|     |   |__|   | |__   __|    |  __| |__|   |  |__|  __|
+E     F
+|__D__|"""
+
+def getSevSegStr(number, minWidth=0):
+    """Return a seven-segment display string of number.  The returned
+    string will be padded with zeros if it is smaller than minWidth."""
+
+    number=str(number).zfill(minWidth)
+    rows=['','','']
+    for i, numeral in enumerate(number):
+        if number == '.':
+            rows[0]+=' '
+            rows[1]+=' '
+            rows[2]+='.'
+            continue
+        elif numeral=='-':
+            rows[0]+='    '
+            rows[1]+=' __ '
+            rows[2]+='    '
+        elif numeral=='0':
+            rows[0]+=' __ '
+            rows[1]+='|  |'
+            rows[2]+='|__|'
+        elif numeral=='1':
+            rows[0]+='    '
+            rows[1]+='   |'
+            rows[2]+='   |'
+        elif numeral=='2':
+            rows[0]+=' __ '
+            rows[1]+=' __|'
+            rows[2]+='|__ '
+        elif numeral=='3':
+            rows[0]+=' __ '
+            rows[1]+=' __|'
+            rows[2]+=' __|'
+        elif numeral=='4':
+            rows[0]+='    '
+            rows[1]+='|__|'
+            rows[2]+='   |'
+        elif numeral=='5':
+            rows[0]+=' __ '
+            rows[1]+='|__ '
+            rows[2]+=' __|'
+        elif numeral=='6':
+            rows[0]+=' __ '
+            rows[1]+='|__ '
+            rows[2]+='|__|'
+        elif numeral=='7':
+            rows[0]+=' __ '
+            rows[1]+='   |'
+            rows[2]+='   |'
+        elif numeral=='8':
+            rows[0]+=' __ '
+            rows[1]+='|__|'
+            rows[2]+='|__|'
+        elif numeral=='9':
+            rows[0]+=' __ '
+            rows[1]+='|__|'
+            rows[2]+=' __|'
+
+        if i != len(number)-1:
+            rows[0]+=' '
+            rows[1]+=' '
+            rows[2]+=' '
+    return '\n'.join(rows)
+
+if __name__ == '__main__':
+    print('This module is meant to be imported rather than run.')
+    print('For example, this code:')
+    print('    import sevseg')
+    print('    myNumber = sevseg.getSevSegStr(42,3)')
+    print('    print(myNumber)')
+    print()
