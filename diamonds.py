@@ -25,11 +25,14 @@ def displayOutlineDiamond(size):
         print('/', end='')
         print(' '*(i*2), end='')
         print('\\')
-    for i in range(size:
+    for i in range(size):
         print(' '*i, end='')
         print('\\', end='')
         print(' '*((size-i-1)*2), end='')
         print('/')
+        
+def displayFilledDiamond(size):
+    pass
 
 if __name__=='__main__':
     main()
