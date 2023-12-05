@@ -20,25 +20,25 @@ D1 = (['+-------+',
        '|       |',
        '+-------+'],1)
 
-D2 = (['+-------+',
+D2a = (['+-------+',
        '| O     |',
        '|       |',
        '|     O |',
        '+-------+'],2)
 
-D2 = (['+-------+',
+D2b = (['+-------+',
        '|     O |',
        '|       |',
        '| O     |',
        '+-------+'],2)
 
-D3 = (['+-------+',
+D3a = (['+-------+',
        '| O     |',
        '|   O   |',
        '|     O |',
        '+-------+'],3)
 
-D3 = (['+-------+',
+D3b = (['+-------+',
        '|     O |',
        '|   O   |',
        '| O     |',
@@ -50,20 +50,70 @@ D4 = (['+-------+',
        '| O   O |',
        '+-------+'],4)
 
-D4 = (['+-------+',
+D5 = (['+-------+',
        '| O   O |',
        '|   O   |',
        '| O   O |',
-       '+-------+'],4)
+       '+-------+'],5)
 
-D4 = (['+-------+',
+D6a = (['+-------+',
        '| O   O |',
        '| O   O |',
        '| O   O |',
-       '+-------+'],4)
+       '+-------+'],6)
 
-D4 = (['+-------+',
+D6b = (['+-------+',
        '| O O O |',
        '|       |',
        '| O O O |',
-       '+-------+'],4)
+       '+-------+'],6)
+
+ALL_DICE = [D1, D2a, D2b, D3a, D3b, D4, D5, D6a, D6b]
+print('''Dice Math, by A. Sweigart
+      Add up the sides of all the dice displayed on the screen.  You have
+      {} seconds to answer as many as possible.  You get {} points for each
+      correct answer and lose {} point for each incorrect answer.
+      '''.format(QUIZ_DURATION, REWARD, PENALTY))
+input('Press Enter to begin...')
+
+correctAnswers = 0
+incorrectAnswers = 0
+startTime = time.time()
+while time.time()<startTime+QUIZ_DURATION:
+    sumAnswer=0
+    diceFaces = []
+    for i in range(random.randint(MIN_DICE, MAX_DICE)):
+        die = random.choice(ALL_DICE)
+        diceFaces.append(die[0])
+        sumAnswer+=die[1]
+    
+    topLeftDiceCorners = []
+
+    for i in range(len(diceFaces)):
+        while True:
+            left = random.randint(0, CANVAS_WIDTH-1-DICE_WIDTH)
+            top = random.randint(0,CANVAS_HEIGHT-1-DICE_HEIGHT)
+            topLeftX=left
+            topLeftY=top
+            topRightX=left+DICE_WIDTH
+            topRightY=top
+            bottomLeftX=left
+            bottomLeftY=top+DICE_HEIGHT
+            bottomRightX=left+DICE_WIDTH
+            bottomRightY=top+DICE_HEIGHT
+
+            overlaps = False
+            for prevDieLeft, prevDieTop in topLeftDiceCorners:
+                prevDieRight = prevDieLeft+DICE_WIDTH
+                preDieBottom=prevDieTop+DICE_HEIGHT
+
+                for cornerX, cornerY in ((topLeftX, topLeftY),
+                                         (topRightX, topRightY),
+                                         (bottomLeftX, bottomLeftY),
+                                         (bottomRightX, bottomRightY)):
+                    if(prevDieLeft <= cornerX < prevDieRight
+                       and prevDieTop <= cornerY < preDieBottom):
+                        overlaps=True
+                if not overlaps:
+                    topLeftDiceCorners.append((left, top))
+                    break
