@@ -36,6 +36,10 @@ def displayFilledDiamond(size):
         print(' '*(size-i-1), end='')
         print('/'*(i+1), end='')
         print('\\'*(i+1))
+    for i in range(size):
+        print(' '*i, end='')
+        print('\\'*(size-i), end='')
+        print('/'*(size-i))
 
 if __name__=='__main__':
     main()
